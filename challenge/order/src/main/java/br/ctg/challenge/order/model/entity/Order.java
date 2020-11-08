@@ -35,10 +35,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public OffsetDateTime confirmationDateTime;
+    private OffsetDateTime confirmationDateTime;
 
     @Enumerated(EnumType.STRING)
-    private EnumOrderStatus enumOrderStatus;
+    private EnumOrderStatus status;
 
     private String street;
     private Integer number;

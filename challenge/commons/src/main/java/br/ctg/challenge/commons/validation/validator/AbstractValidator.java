@@ -11,9 +11,9 @@ import br.ctg.challenge.commons.validation.rule.Rule;
 
 public abstract class AbstractValidator<S> implements Validator<S> {
 
-    private List<Condition> condicoes = new ArrayList<>();
-    private List<Rule> regras = new ArrayList<>();
-    private List<Validator> validadores = new ArrayList<>();
+    private List<Condition> conditions = new ArrayList<>();
+    private List<Rule> rules = new ArrayList<>();
+    private List<Validator> subvalidators = new ArrayList<>();
 
     @PostConstruct
     public void init() {
@@ -22,15 +22,15 @@ public abstract class AbstractValidator<S> implements Validator<S> {
 
     public abstract void adicionarRegrasCondicoesESubValidaddores();
 
-    public List<String> validarERetornar(S objetoValidavel) {
+    public List<String> validateAndReturnViolations(S objetoValidavel) {
         List<String> mensagensValidacao = new ArrayList<>();
 
-        if ((condicoes.isEmpty() || condicoes.stream().filter(c -> !c.conditionTriggered(objetoValidavel)).count() == 0)
+        if ((conditions.isEmpty() || conditions.stream().filter(c -> !c.conditionTriggered(objetoValidavel)).count() == 0)
                 &&
-                !regras.isEmpty()) {
-            mensagensValidacao.addAll(regras.stream().map(r -> r.validar(objetoValidavel)).filter(r -> r != null).collect(Collectors.toList()));
-            if (!validadores.isEmpty()) {
-                mensagensValidacao.addAll(validadores.stream().map(v -> v.validarERetornar(objetoValidavel)).reduce(
+                !rules.isEmpty()) {
+            mensagensValidacao.addAll(rules.stream().map(r -> r.validate(objetoValidavel)).filter(r -> r != null).collect(Collectors.toList()));
+            if (!subvalidators.isEmpty()) {
+                mensagensValidacao.addAll(subvalidators.stream().map(v -> v.validateAndReturnViolations(objetoValidavel)).reduce(
                         (a, b) -> {
                             a.addAll(b);
                             return a;
@@ -42,23 +42,23 @@ public abstract class AbstractValidator<S> implements Validator<S> {
         return mensagensValidacao;
     }
 
-    public void validarELancarExcessao(S objetoValidavel) {
-        List<String> mensagensValidacao = validarERetornar(objetoValidavel);
+    public void validateAndThrowViolationAsException(S objetoValidavel) {
+        List<String> mensagensValidacao = validateAndReturnViolations(objetoValidavel);
 
         if (!mensagensValidacao.isEmpty()) {
             throw new CtgValidationException("Existem erros de validação", mensagensValidacao);
         }
     }
 
-    protected void addCondicao(Condition condicao) {
-        condicoes.add(condicao);
+    protected void addCondtion(Condition condicao) {
+        conditions.add(condicao);
     }
 
-    protected void addRegra(Rule regra) {
-        regras.add(regra);
+    protected void addRule(Rule regra) {
+        rules.add(regra);
     }
 
-    protected void addValidador(Validator validador) {
-        validadores.add(validador);
+    protected void addValidator(Validator validador) {
+        subvalidators.add(validador);
     }
 }

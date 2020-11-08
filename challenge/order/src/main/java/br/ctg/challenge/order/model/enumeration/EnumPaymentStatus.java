@@ -3,11 +3,10 @@ package br.ctg.challenge.order.model.enumeration;
 import lombok.Getter;
 
 @Getter
-public enum EnumOrderStatus {
+public enum EnumPaymentStatus {
 
-    CREATED,
+    PENDING,
     CONFIRMED,
-    CANCELED,
-    REFUNDED;;
+    CANCELED;
 
 }

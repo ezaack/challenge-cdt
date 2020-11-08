@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 @Component
 public class ConditionNameNotInformed implements Condition<StoreVo> {
     @Override
-    public Boolean conditionTriggered(StoreVo objetoValidavel) {
-        return StringUtils.isEmpty(objetoValidavel.getName());
+    public Boolean conditionTriggered(StoreVo validable) {
+        return StringUtils.isEmpty(validable.getName());
     }
 }

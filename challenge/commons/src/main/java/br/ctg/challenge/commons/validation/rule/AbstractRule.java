@@ -13,7 +13,7 @@ public abstract class AbstractRule<S> implements Rule<S> {
     @Autowired
     private MessageSource localResolver;
 
-    private List<Condition<S>> condicoes = new ArrayList<>();
+    private List<Condition<S>> conditions = new ArrayList<>();
 
     @PostConstruct
     public void init() {
@@ -21,16 +21,16 @@ public abstract class AbstractRule<S> implements Rule<S> {
     }
 
     @Override
-    public String validar(S objetoValidavel) {
-        if (!condicoes.isEmpty() && condicoes.stream().filter(c -> !c.conditionTriggered(objetoValidavel)).count() == 0) {
+    public String validate(S objetoValidavel) {
+        if (!conditions.isEmpty() && conditions.stream().filter(c -> !c.conditionTriggered(objetoValidavel)).count() == 0) {
             return aplicarRegra(objetoValidavel);
         }
 
         return null;
     }
 
-    protected void addCondicao(Condition condicao) {
-        condicoes.add(condicao);
+    protected void addCondition(Condition condition) {
+        conditions.add(condition);
     }
 
     protected String getMensagemValidacao(String key, String... param) {

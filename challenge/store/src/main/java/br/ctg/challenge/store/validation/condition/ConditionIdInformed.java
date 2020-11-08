@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 @Component
 public class ConditionIdInformed implements Condition<StoreVo> {
     @Override
-    public Boolean conditionTriggered(StoreVo objetoValidavel) {
-        return objetoValidavel.getId() == null;
+    public Boolean conditionTriggered(StoreVo validable) {
+        return validable.getId() == null;
     }
 }

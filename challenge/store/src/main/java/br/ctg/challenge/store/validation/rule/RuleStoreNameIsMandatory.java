@@ -19,6 +19,6 @@ public class RuleStoreNameIsMandatory extends AbstractRule<StoreVo> {
 
     @Override
     public void adicionarCondicoes() {
-        addCondicao(conditionNameNotInformed);
+        addCondition(conditionNameNotInformed);
     }
 }

@@ -2,5 +2,5 @@ package br.ctg.challenge.commons.validation.condition;
 
 public interface Condition<S> {
 
-    Boolean conditionTriggered(S objetoValidavel);
+    Boolean conditionTriggered(S validable);
 }

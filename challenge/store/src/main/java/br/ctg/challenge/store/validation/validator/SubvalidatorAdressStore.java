@@ -14,6 +14,6 @@ public class SubvalidatorAdressStore extends AbstractValidator<StoreVo> {
 
     @Override
     public void adicionarRegrasCondicoesESubValidaddores() {
-        addRegra(ruleStoreStateAdressIsMandatory);
+        addRule(ruleStoreStateAdressIsMandatory);
     }
 }

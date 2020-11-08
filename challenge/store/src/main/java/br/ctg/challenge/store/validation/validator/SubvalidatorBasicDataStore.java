@@ -12,6 +12,6 @@ public class SubvalidatorBasicDataStore extends AbstractValidator<StoreVo> {
     private RuleStoreNameIsMandatory regraNomeDeveSerInformado;
     @Override
     public void adicionarRegrasCondicoesESubValidaddores() {
-        addRegra(regraNomeDeveSerInformado);
+        addRule(regraNomeDeveSerInformado);
     }
 }

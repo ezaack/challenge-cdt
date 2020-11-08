@@ -7,8 +7,8 @@ public interface Validator<S> {
 
     void adicionarRegrasCondicoesESubValidaddores();
 
-    List<String> validarERetornar(S objetoValidavel);
+    List<String> validateAndReturnViolations(S objetoValidavel);
 
-    void validarELancarExcessao(S objetoValidavel);
+    void validateAndThrowViolationAsException(S objetoValidavel);
 
 }

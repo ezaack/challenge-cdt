@@ -14,7 +14,7 @@ public class ValidatorPersistStore extends AbstractValidator<StoreVo> {
 
     @Override
     public void adicionarRegrasCondicoesESubValidaddores() {
-        addValidador(subvalidatorBasicDataStore);
-        addValidador(subvalidatorAdressStore);
+        addValidator(subvalidatorBasicDataStore);
+        addValidator(subvalidatorAdressStore);
     }
 }

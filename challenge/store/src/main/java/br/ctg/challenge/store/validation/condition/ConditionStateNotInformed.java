@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConditionStateNotInformed implements Condition<StoreVo> {
     @Override
-    public Boolean conditionTriggered(StoreVo objetoValidavel) {
-        return objetoValidavel.getState() == null;
+    public Boolean conditionTriggered(StoreVo validable) {
+        return validable.getState() == null;
     }
 }
