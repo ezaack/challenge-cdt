@@ -18,7 +18,7 @@ public class UpdateStoreServiceImpl implements UpdateStoreService {
 
     @Override
     @Transactional
-    public StoreVo persistir(StoreVo store) {
+    public StoreVo update(StoreVo store) {
 
 
         storeRepository.save(

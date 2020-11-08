@@ -1,4 +1,4 @@
-package br.ctg.challenge.order.services.item;
+package br.ctg.challenge.order.services.order;
 
 import br.ctg.challenge.order.model.vo.ConfirmationVo;
 

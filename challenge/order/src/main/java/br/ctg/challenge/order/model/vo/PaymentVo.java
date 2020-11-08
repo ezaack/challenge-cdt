@@ -17,7 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class PaymentVo {
-
+    private Long id;
     private EnumPaymentStatus enumPaymentStatus;
     private OffsetDateTime dateTimePayment;
     private String credCardNumber;

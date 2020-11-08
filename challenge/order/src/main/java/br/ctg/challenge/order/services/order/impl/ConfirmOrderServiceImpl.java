@@ -1,11 +1,11 @@
-package br.ctg.challenge.order.services.item.impl;
+package br.ctg.challenge.order.services.order.impl;
 
 import java.time.OffsetDateTime;
 
 import br.ctg.challenge.order.model.enumeration.EnumOrderStatus;
 import br.ctg.challenge.order.model.repository.OrderRepository;
 import br.ctg.challenge.order.model.vo.ConfirmationVo;
-import br.ctg.challenge.order.services.item.ConfirmOrderService;
+import br.ctg.challenge.order.services.order.ConfirmOrderService;
 import br.ctg.challenge.order.validation.validator.ValidatorOrderConfirmation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

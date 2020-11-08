@@ -6,13 +6,13 @@ import br.ctg.challenge.order.model.entity.Order;
 import br.ctg.challenge.order.model.enumeration.EnumOrderStatus;
 import br.ctg.challenge.order.model.repository.OrderRepository;
 import br.ctg.challenge.order.model.vo.OrderVO;
-import br.ctg.challenge.order.services.order.PersistOrderItemService;
+import br.ctg.challenge.order.services.order.PersistOrderService;
 import br.ctg.challenge.order.services.item.PersistItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersistOrderItemServiceImpl implements PersistOrderItemService {
+public class PersistOrderServiceImpl implements PersistOrderService {
 
     @Autowired
     private OrderRepository orderRepository;

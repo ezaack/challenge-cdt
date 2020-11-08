@@ -51,4 +51,6 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items;
+
+    private Long storeId;
 }

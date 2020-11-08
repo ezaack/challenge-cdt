@@ -1,8 +1,8 @@
-package br.ctg.challenge.store.controllers;
+package br.ctg.challenge.order.controllers;
 
 import br.ctg.challenge.commons.exception.CtgValidationException;
-import br.ctg.challenge.store.model.vo.StoreVo;
-import br.ctg.challenge.store.services.PersistStoreService;
+import br.ctg.challenge.order.model.vo.OrderVO;
+import br.ctg.challenge.order.services.order.PersistOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping(value = "/store")
-public class PersistStoreController {
+@RequestMapping(value = "/order")
+public class PersistOrderController {
 
     @Autowired
-    private PersistStoreService persistStoreService;
+    private PersistOrderService persistStoreService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity post(@RequestBody StoreVo loja) {
+    public ResponseEntity post(@RequestBody OrderVO order) {
         try {
-            return ResponseEntity.ok(persistStoreService.persistir(loja));
+            return ResponseEntity.ok(persistStoreService.persist(order));
         } catch (CtgValidationException e) {
             return ResponseEntity.badRequest().body(e.getViolationMessages());
         }
