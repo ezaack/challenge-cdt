@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import br.ctg.challenge.store.model.enumeration.EnumUF;
 import br.ctg.challenge.store.model.enumeration.converter.EnumUFConverter;
@@ -16,6 +17,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+@Table(name="TB_STORE")
 @Getter
 @Setter
 @Builder
