@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RefundOrderConfirmation extends AbstractValidator<Long> {
+public class RefundOrderValidator extends AbstractValidator<Long> {
     @Autowired
     private RuleMustHaveAValidPayment ruleMustHaveAValidPayment;
     @Autowired

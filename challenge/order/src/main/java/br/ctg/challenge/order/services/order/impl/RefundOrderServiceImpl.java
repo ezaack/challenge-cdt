@@ -2,18 +2,17 @@ package br.ctg.challenge.order.services.order.impl;
 
 import br.ctg.challenge.order.adapter.GetPeymentAdapter;
 import br.ctg.challenge.order.adapter.RefundPaymentAdapter;
-import br.ctg.challenge.order.adapter.imp.RefundPaymentAdapterStub;
 import br.ctg.challenge.order.model.enumeration.EnumOrderStatus;
 import br.ctg.challenge.order.model.repository.OrderRepository;
 import br.ctg.challenge.order.services.order.RefundOrderService;
-import br.ctg.challenge.order.validation.validator.RefundOrderConfirmation;
+import br.ctg.challenge.order.validation.validator.RefundOrderValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RefundOrderServiceImpl implements RefundOrderService {
     @Autowired
-    private RefundOrderConfirmation refundOrderConfirmation;
+    private RefundOrderValidator refundOrderValidator;
     @Autowired
     private OrderRepository orderRepository;
     @Autowired
@@ -23,7 +22,7 @@ public class RefundOrderServiceImpl implements RefundOrderService {
 
     @Override
     public void refund(Long orderId) {
-        refundOrderConfirmation.validateAndThrowViolationAsException(orderId);
+        refundOrderValidator.validateAndThrowViolationAsException(orderId);
 
         refundPayment(orderId);
         updateOrdersStatus(orderId);
